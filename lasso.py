@@ -6,13 +6,17 @@ app = Flask(__name__)
 
 with open("config.json", "r") as f:
     config = json.load(f)
-    target_url = config["target_url"]
+    endpoints = config["endpoints"]
 
-@app.route("/", methods=["GET", "POST", "PUT", "DELETE"])
-def handle_request():
+@app.route("/<path:path>", methods=["GET", "POST", "PUT", "DELETE"])
+def handle_request(path):
+    target_url = endpoints.get("/" + path.split("/", 1)[0])
+    if not target_url:
+        return Response("Not found", 404)
+
     resp = requests.request(
         method=request.method,
-        url=target_url,
+        url=target_url + path,
         headers={key: value for (key, value) in request.headers if key != "Host"},
         data=request.get_data(),
         params=request.args,
