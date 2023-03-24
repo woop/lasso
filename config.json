@@ -1,0 +1,8 @@
+{
+  "endpoints": {
+    "/auth": "https://auth.example.com",
+    "/users": "https://users.example.com",
+    "/billing": "https://billing.example.com",
+    "/products": "https://products.example.com"
+  }
+}

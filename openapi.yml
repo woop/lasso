@@ -1,0 +1,30 @@
+openapi: 3.0.2
+info:
+  title: Lasso API
+  version: 1.0.0
+
+paths:
+  /auth:
+    post:
+      summary: Forward authentication request
+      responses:
+        "200":
+          description: Success
+  /users:
+    get:
+      summary: Forward user management request
+      responses:
+        "200":
+          description: Success
+  /billing:
+    get:
+      summary: Forward billing request
+      responses:
+        "200":
+          description: Success
+  /products:
+    get:
+      summary: Forward product catalog request
+      responses:
+        "200":
+          description: Success
